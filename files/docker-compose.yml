@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  analyzer:
+    build: .
+    volumes:
+      - .:/workspace
+      - ./quantum_analyzer.yaml:/config/quantum_analyzer.yaml
+    working_dir: /workspace
+    entrypoint: ["quantum-analyzer"]
+    command: ["/workspace"]

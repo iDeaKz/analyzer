@@ -1,0 +1,25 @@
+# Quantum Analyzer Configuration
+
+# Patterns
+patterns:
+  - patterns/base_patterns.yaml
+  - patterns/security_patterns.yaml
+
+# Output options
+output: analysis_results.json
+format: both
+severity: info
+
+# Filter options
+tags:
+  - security
+  - performance
+
+# Processing options
+parallel: true
+threads: 4
+
+# Auto-fix options
+fix: false
+fix_patterns:
+  - format_to_fstring

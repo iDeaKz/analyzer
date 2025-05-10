@@ -1,0 +1,50 @@
+# Base patterns with severity and tags
+"def\s+\w+\([^)]*\):$":
+  severity: info
+  tags:
+    - function
+    - signature
+  ideas:
+    - "Use explicit return type hints for better API introspection and editor support."
+    - "Auto-generate OpenAPI doc summaries from function metadata."
+    - "Apply decorator-based logging for entry/exit diagnostics."
+
+"return\s+":
+  severity: info
+  tags:
+    - function
+    - return
+  ideas:
+    - "Run schema validation on returned object using `model.validate()`."
+    - "Log structured metrics (e.g., reward, entropy) to a telemetry endpoint."
+    - "Consider transforming objects into serializable DTOs before returning to clients."
+
+"import\s+random":
+  severity: warning
+  tags:
+    - import
+    - random
+  ideas:
+    - "Refactor to support pluggable RNG modules for simulation variety (e.g., secrets or numpy)."
+    - "Encapsulate RNG access in a `rng_utils.py` for unit testing and mocking."
+    - "Introduce entropy seed management for experiment repeatability."
+
+"json\.loads\(Path\([^)]+\)\.read_text\(\)\)":
+  severity: warning
+  tags:
+    - io
+    - json
+  ideas:
+    - "Move I/O to a dedicated `repository` or `storage` layer to respect clean architecture."
+    - "Add structured validation using Pydantic or Marshmallow schemas for all input data."
+    - "Implement fallbacks or dynamic file resolution for multi-env support."
+
+"random\.(choice|uniform|randint)":
+  severity: warning
+  tags:
+    - random
+    - values
+  ideas:
+    - "Make entropy ranges and options configurable via `.env` or config file."
+    - "Replace magic values with constants (already done) but ensure they're externally tunable."
+    - "Store generated randomness in fork logs for quantum traceability."
