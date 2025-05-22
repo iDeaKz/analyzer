@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import List, Optional
 
 from .analyzer import ProjectAnalyzer, PatternLoader
+from . import __version__
 from .config import load_config, merge_with_args, Severity, OutputFormat
 from .fix import apply_fixes
 
@@ -91,7 +92,7 @@ def parse_args(args: Optional[List[str]] = None) -> argparse.Namespace:
 def main() -> int:
     """Main entry point."""
     # Print banner
-    print(f"Quantum Analyzer v{__import__('quantum_analyzer').__version__}")
+    print(f"Quantum Analyzer v{__version__}")
     print(f"Started at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("-" * 60)
     
