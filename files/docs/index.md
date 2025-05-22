@@ -19,3 +19,4 @@ A modular, extensible code analysis toolkit that scans Python codebases and sugg
 
 ```bash
 pip install quantum-analyzer
+```
